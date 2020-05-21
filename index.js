@@ -101,10 +101,13 @@ class Car {
     this.tank += gals;
   }
   drive(distance){
-    this.odometer += distance;
-    this.tank -= (distance / this.milesPerGallon);
-    if (this.tank == 0){
-      return `I ran out of fuel at ${this.odometer} miles!`;
+    if(distance < (this.tank * this.milesPerGallon)){
+      this.odometer += distance;
+      this.tank -= distance/this.milesPerGallon
+    } else {
+      this.odometer = (this.tank * this.milesPerGallon);
+      this.tank = 0;
+      return `I ran out of fuel ${this.odometer} miles!`;
     }
   }
 }
@@ -127,8 +130,23 @@ const bigFord = new Car({
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  constructor(attr){
+    this.name = attr.name;
+    this.age = attr.age;
+    this.location = attr.location;
+  }
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
+  }
 }
+
+const meAtLambda = new Lambdasian({
+  name: 'Richard',
+  age: '28, I think',
+  location: 'Georgia',
+});
+
+console.log(meAtLambda.speak());
 
 /*
   TASK 4
