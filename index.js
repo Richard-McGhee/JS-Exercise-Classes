@@ -67,7 +67,7 @@ class Child extends Person{
 
 const dave = new Person({
   name: 'Dave',
-  age: '38',
+  age: 38,
 });
 
 console.log(dave.toString());
@@ -108,6 +108,11 @@ class Car {
     }
   }
 }
+
+const bigFord = new Car({
+  model: 'Ford',
+  milesPerGallon: 17,
+});
 
 /*
   TASK 3
