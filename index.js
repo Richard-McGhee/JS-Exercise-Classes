@@ -162,9 +162,47 @@ console.log(meAtLambda.speak());
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
-
+class Instructor extends Lambdasian{
+  constructor(attr){
+    super(attr);
+    this.speciality = attr.speciality
+    this.favLanguage = attr.favLanguage
+    this.catchPhrase = attr.catchPhrase
+  }
+  demo(subject){
+    return `Today we are learning about ${subject}`;
+  }
+  grade(student, subject){
+    return `${student.name} receives a perfect sorce on ${subject}`;
+  }
 }
+
+class NewStudent extends Instructor{
+  constructor(attr){
+    super(attr);
+  }
+}
+
+const newInstructor = new Instructor({
+  name: 'Samantha',
+  age: 48,
+  location: 'Tenessee',
+  speciality: 'Computer Science',
+  favLanguage: 'Spanish',
+  catchPhrase: 'Sir, computers can not do that.',
+});
+
+const diffStudent = new NewStudent({
+  name: 'Davey',
+  age: 35,
+  location: 'Alabama',
+  speciality: 'networking',
+  favLanguage: 'Russian',
+  catchPhrase: 'Sir, your network is not down.',
+});
+
+console.log(newInstructor.demo('javaScript'));
+console.log(newInstructor.grade(diffStudent, 'Penetration testing'));
 
 /*
   TASK 5
