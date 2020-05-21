@@ -91,7 +91,22 @@ console.log(dave.stomach[0]);
 */
 
 class Car {
-
+  constructor(attr){
+    this.model = attr.model;
+    this.milesPerGallon = attr.milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gals){
+    this.tank += gals;
+  }
+  drive(distance){
+    this.odometer += distance;
+    this.tank -= (distance / this.milesPerGallon);
+    if (this.tank == 0){
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+  }
 }
 
 /*
